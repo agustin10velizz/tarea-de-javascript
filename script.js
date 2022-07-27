@@ -1,35 +1,34 @@
-               
-/*
-    5 + 5 = 10
-    "5" + "5" = "55"
-    "5" + 5 = "55"
-  */
+const sumar = (producto1, producto2) => producto1 + producto2
+
+let respuesta
 
 
+do {
+    let  operacion,producto1, producto2
 
-/*let acumulador = 0
-
-for (let i=1; i < 16;  i++ ){ //i+=1 , i=i + 1 , i++ (maneras de simplificar)
-    let productos = parseInt(prompt("Ingrese la cantidad de productos"))
+    do {
+        producto1 = parseFloat(prompt("Cuantos productos de mates vas a comprar?"))
+        producto2 = parseFloat(prompt("Cuantos productos de termos vas a comprar?"))
+        operacion = prompt("Ingrese una operacion (+)")
     
-    acumulador += productos
-}
-console.log ("El acumulado de productos es igual a: " +(acumulador/15))
-console.log (`El acumulado de productos es igual a: ${acumulador /15}`)
-*/
+        if(isNaN(producto1) || isNaN(producto2)) {
+            console.log("Numero incorrecto")
+        }
+    
+    
+    }while (isNaN(producto1) || isNaN(producto2)) 
+    
+    switch(operacion) {
+        case "+":
+            console.log ("El acumulado de productos es igual a: ",sumar (producto1 ,producto2))
+            break
 
-let repetir = true
 
-while (repetir){ //repetir == true
-  
-  let producto1 = parseFloat(prompt("Ingrese la cantidad de productos que necesite"))
-  let producto2 = parseFloat(prompt("Ingrese otra cantidad de productos"))
-
-  console.log (producto1 + producto2)
-  let confirmacion = prompt("Necesita mas productos?").toLowerCase()
-
-  if(confirmacion == "no" ){
-    repetir = false //break
-  }
-
-}
+        default:
+            console.log("Operacion no valida")
+    }
+    do {
+        respuesta = prompt("Necesita ingresar mas productos?").toLowerCase()
+    }while(respuesta != "si" && respuesta != "no")
+   
+}while(respuesta != "no")
