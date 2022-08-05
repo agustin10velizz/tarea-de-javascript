@@ -1,3 +1,5 @@
+
+/*
 const sumar = (producto1, producto2, producto3, producto4 ) => producto1 + producto2 + producto3 + producto4
 const multiplicar = (producto1, producto2, producto3, producto4 ) => producto1 * producto2 * producto3 * producto4
 
@@ -64,7 +66,7 @@ do {
        
     
     
-    }while (isNaN(producto1) || isNaN(producto2) || isNaN(producto3) || isNaN(producto4))
+    }
 
     
     switch(operacion) {
@@ -78,26 +80,43 @@ do {
 
     do {
         respuesta = prompt("Necesita ingresar mas productos?").toLowerCase()
-    }while(respuesta != "si" && respuesta != "no")
+    }
         
    
-}while(respuesta != "no")
-
+}
+*/
 
 
 class Producto{
-    constructor(nombre, marca, precio){
+    constructor(id,nombre, marca, precio){
+        this.id = id
         this.nombre = nombre
         this.marca = marca
         this.precio = precio
     }
 }
 
-const productosss1 = new Producto ("Mate", "Imperial", "2500")
-const productosss2 = new Producto ("Termo", "stanley", "5000")
-const productosss3 = new Producto ("Bombilla", "Apacuero", "950")
-const productosss4 = new Producto ("Kit de mate", "LaPampa","7000")
+const productosss1 = new Producto (1,"Mate", "Imperial", "2500")
+const productosss2 = new Producto (2,"Termo", "stanley", "5000")
+const productosss3 = new Producto (3,"Bombilla", "Apacuero", "950")
+const productosss4 = new Producto (4,"Kit de mate", "LaPampa","7000")
 
 const productoss = [productosss1, productosss2, productosss3, productosss4]
 
-console.table(productoss)
+const mate_productos = document.getElementById("mate_productos")
+
+productoss.forEach( producto =>{
+    
+    mate_productos.innerHTML += `
+    
+ <div class="card" id="producto ${producto.nombre}" style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title"> Nombre: ${producto.nombre}</h5>
+    <p class="card-text"> Marca: ${producto.marca}</p>
+    <p class="card-text"> Precio: ${producto.precio}</p>
+
+        </div>
+    </div>
+
+    `
+})
