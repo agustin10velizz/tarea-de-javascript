@@ -86,6 +86,7 @@ do {
 }
 */
 
+//interectuar html
 
 class Producto{
     constructor(id,nombre, marca, precio){
@@ -119,4 +120,29 @@ productoss.forEach( producto =>{
     </div>
 
     `
+})
+
+
+
+//agregando eventos
+
+class Compras {
+    constructor(username, productos, dia_hora) {
+        this.username = username
+        this.productos = productos
+        this.dia_hora = dia_hora
+    }
+}
+const compra = []
+const formUser = document.getElementById("formUser")
+
+formUser.addEventListener('submit', (event) => {
+    event.preventDefault()
+    let username = document.getElementById('username').value
+    let productos = document.getElementById('productos').value
+    let dia_hora = document.getElementById('dia_hora').value
+    const user = new Compras(username, productos, dia_hora)
+    compra.push(user)
+    console.log(compra)
+    formUser.reset()
 })

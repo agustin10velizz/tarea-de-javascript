@@ -1,4 +1,10 @@
 .card{
     background-color:  #ffbd00;
     margin:15px;
+   
 }
+
+.row{
+    justify-content: center;
+}
+
