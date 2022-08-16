@@ -2,7 +2,7 @@ body{
     background-color: #93a1f0;
     color: black;
     transition: ease 0.5s;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    
 }
 
 .ModoOscuro {
@@ -25,10 +25,22 @@ body{
 .boton{
    margin: 5px;
    margin-top: 100px;
+   background-color: white;
 }
 
 .img{
     width: 110px;
     margin-left: 50px;
     padding-bottom: 10px;
+    
+}
+
+.botonCompra{
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.botonInicio{
+    margin: 5px;
 }

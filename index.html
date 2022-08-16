@@ -21,24 +21,31 @@
     <div class="container">
         <form id="formUser">
             <div class="mb-3">
-                <label for="username" class="form-label">Nombre y apellido</label>
-                <input type="text" class="form-control" id="username">
+              <label for="producto" class="form-label">Elija su producto</label>
+              <input type="text" class="form-control" name="producto" id="producto">
             </div>
             <div class="mb-3">
-              <label for="produtos" class="form-label">Que productos va a comprar?</label>
-              <input type="text" class="form-control" id="productos">
+              <label for="color" class="form-label">De que color va querer su producto?</label>
+              <input type="text" class="form-control" name="color" id="color">
             </div>
             <div class="mb-3">
-                <label for="dia_hora">A que hora y dia quiere que le llegue los productos?</label>
-                <input type="datetime-local" id="dia_hora" >
-            </div>
-            <button type="submit" class="btn btn-danger">Comprar</button>
+                <label for="direccion" class="form-label">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="direccion">
+              </div>
+            <button type="submit" class=" btn btn-danger">Comprar</button>
           </form>
+    </div><br><br>
+
+    <div class="container">
+        <button id="VerCompra" class="botonInicio btn btn-secondary">Ver la compra</button><br><br>
+        <div id="divCarrito" class="row"></div>
     </div>
+    
 
     <div class="d-flex justify-content-center">
-    <button id="botonModoOscuro" class="boton btn btn-dark">Oscuro</button>
-    <button id="botonModoClaro" class="boton btn btn-light">Claro</button></div>
+    <button id="botonModoOscuro" class="boton  btn btn-light">Modo Claro/Oscuro</button>
+    </div>
+     
 
    
 

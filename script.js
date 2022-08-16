@@ -129,31 +129,6 @@ productoss.forEach( producto =>{
     `
 })
 
-//agregando eventos y haciendo intereaccion con el formulario
-
-class Compras {
-    constructor(username, productos, dia_hora) {
-        this.username = username
-        this.productos = productos
-        this.dia_hora = dia_hora
-    }
-}
-const compra = []
-const formUser = document.getElementById("formUser")
-
-formUser.addEventListener('submit', (event) => {
-    event.preventDefault()
-    let username = document.getElementById('username').value
-    let productos = document.getElementById('productos').value
-    let dia_hora = document.getElementById('dia_hora').value
-    const user = new Compras(username, productos, dia_hora)
-    compra.push(user)
-    formUser.reset()
-    console.table(compra)
-})
-
-
-
 //usando storage y jsnon
 
 localStorage.setItem("bienvenido", "buenas tardes")
@@ -161,29 +136,107 @@ console.log(localStorage.getItem("bienvenido"))
 
 
 //usando el modo oscuro y claro
-const botonNegro = document.getElementById('botonModoOscuro')
-const botonBlanco = document.getElementById('botonModoClaro')
 
-let ModoOscuro
+const botonNegro = document.querySelector("#botonModoOscuro")
 
-if(localStorage.getItem('ModoOscuro')) {   //si existe el local storage
-    ModoOscuro = localStorage.getItem('ModoOscuro') //consulto el local storage
-} else {
-    localStorage.setItem('ModoOscuro', "ModoClaro") //crearlo
-}
+botonNegro.addEventListener ('click', () =>{
+    document.body.classList.toggle("ModoOscuro")
+    botonNegro.classList.toggle('active')
 
-if(ModoOscuro == "dark") {
-    document.body.classList.add("ModoOscuro")
-}
 
-botonNegro.addEventListener('click', () => {
-    
-    document.body.classList.add("ModoOscuro")
-    localStorage.setItem('ModoOscuro', "Modo Oscuro")
+    //guardamos el modo oscuro en localstorage
+    if (document.body.classList.contains ("ModoOscuro")){
+        localStorage.setItem("ModoOscuro" , 'Oscuro')
+    }   else{
+        localStorage.setItem("ModoOscuro" , 'Claro')
+    }
 })
 
-botonBlanco.addEventListener('click', () => {
-   
+// obtendra el modo que puso
+if (localStorage.getItem("ModoOscuro") === 'Oscuro'){
+    document.body.classList.add("ModoOscuro")
+    botonNegro.classList.add('active')
+
+}   else {
     document.body.classList.remove("ModoOscuro")
-    localStorage.setItem('ModoOscuro', "Modo Claro")
+    botonNegro.classList.toggle('active')
+
+}
+
+
+//agregando eventos y haciendo intereaccion con el formulario
+
+class comprar {
+    constructor(producto, color, direccion) {
+        this.producto = producto
+        this.color = color
+        this.direccion = direccion
+        
+    }
+}
+
+const compra = []
+const formUser = document.getElementById("formUser")
+
+
+
+if(localStorage.getItem("compra")) {
+    compra = JSON.parse(localStorage.getItem("compra"))
+} else {
+    localStorage.setItem("compra", JSON.stringify(compra))    
+}
+
+
+const botonCompra = document.getElementById("VerCompra")
+const divCarrito = document.getElementById("divCarrito")
+
+formUser.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const datForm = new FormData(e.target)
+   
+    const compraObj = new comprar(datForm.get("producto"), datForm.get("color"), datForm.get("direccion"))
+
+    compra.push(compraObj)
+    localStorage.setItem("compra", JSON.stringify(compra))
+    formUser.reset()
 })
+
+botonCompra.addEventListener('click', () => {
+    const CarritoStorage = JSON.parse(localStorage.getItem("compra"))
+    
+
+    divCarrito.innerHTML = ""
+    CarritoStorage.forEach((compra, indice) => {
+        divCarrito.innerHTML += `
+        <div class="card border-primary mb-3" id="tarea${indice}" style="max-width: 14rem;margin:4px;">
+            <div class="card-header"><h2>Producto:${compra.producto}<h2></div>
+            <div class="card-body">
+                <p class="card-text">Color:${compra.color}</p>
+                <p class="card-text">Direccion:${compra.direccion}</p>
+                <button class="botonCompra btn btn-info">comprar</button>
+                <button class="btn btn-danger">Borrar compra</button>
+                
+            </div>
+        </div>
+        `
+    })
+
+    /*
+    CarritoStorage.forEach((Compra, index) => {
+        document.getElementById(`compra${index}`).children[1].children[5].addEventListener('click', () => {
+            document.getElementById(`compra${index}`).remove()
+            Compra.splice(index,1)
+            localStorage.setItem("compra", JSON.stringify(Compra))
+        })
+    })*/
+})
+
+
+let CarritoStorage = JSON.parse (localStorage.getItem ("carrito"))
+
+if (CarritoStorage){
+    CarritoStorage = CarritoStorage
+} else {
+    carrito = []
+}
