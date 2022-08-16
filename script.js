@@ -180,8 +180,8 @@ const formUser = document.getElementById("formUser")
 
 
 
-if(localStorage.getItem("compra")) {
-    compra = JSON.parse(localStorage.getItem("compra"))
+if(localStorage.getItem("compras")) {
+    Compra = JSON.parse(localStorage.getItem("compras"))
 } else {
     localStorage.setItem("compra", JSON.stringify(compra))    
 }
@@ -198,12 +198,12 @@ formUser.addEventListener("submit", (e) => {
     const compraObj = new comprar(datForm.get("producto"), datForm.get("color"), datForm.get("direccion"))
 
     compra.push(compraObj)
-    localStorage.setItem("compra", JSON.stringify(compra))
+    localStorage.setItem("compras", JSON.stringify(compra))
     formUser.reset()
 })
 
 botonCompra.addEventListener('click', () => {
-    const CarritoStorage = JSON.parse(localStorage.getItem("compra"))
+    const CarritoStorage = JSON.parse(localStorage.getItem("compras"))
     
 
     divCarrito.innerHTML = ""
