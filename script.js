@@ -177,9 +177,42 @@ class comprar {
 
 const compra = []
 const formUser = document.getElementById("formUser")
+let compras=[]
+formUser.addEventListener("submit",(crear)=>{  
+    crear.preventDefault();
+    let producto=  document.getElementById("producto").value
+    let color = document.getElementById("color").value
+    let direccion = document.getElementById("direccion").value
+    const compra = new comprar(producto, color , direccion );
+    compras.push(compra);
 
+  //al tocar compra le llegara un mensaje de que a hecho bien la compra o le falto completar los datos
 
+    formUser.reset();
 
+    if (producto === '' || color === '' || direccion === ''){
+        Toastify({
+            text: "Faltan completar la compra",
+            
+            style: {
+              background: "linear-gradient(to left, #d31027, #ea384d)",
+            }
+          }).showToast();
+    }else{
+
+        Swal.fire({
+            icon: 'success',
+            title: '<h3 >Compra finalizada  <h3>',
+            text: '',
+            footer: '<a >En breve podra ver su compra </a>'
+        }) 
+    }
+
+    
+
+})
+
+// al tocar "ver compra" podra ver el produto que compro
 if(localStorage.getItem("compras")) {
     Compra = JSON.parse(localStorage.getItem("compras"))
 } else {
@@ -205,6 +238,7 @@ formUser.addEventListener("submit", (e) => {
 botonCompra.addEventListener('click', () => {
     const CarritoStorage = JSON.parse(localStorage.getItem("compras"))
     
+    
 
     divCarrito.innerHTML = ""
     CarritoStorage.forEach((compra, indice) => {
@@ -214,7 +248,6 @@ botonCompra.addEventListener('click', () => {
             <div class="card-body">
                 <p class="card-text">Color:${compra.color}</p>
                 <p class="card-text">Direccion:${compra.direccion}</p>
-                <button class="botonCompra btn btn-info">comprar</button>
                 <button class="btn btn-danger">Borrar compra</button>
                 
             </div>
@@ -240,3 +273,5 @@ if (CarritoStorage){
 } else {
     carrito = []
 }
+
+
