@@ -1,107 +1,21 @@
 
-/*
-const sumar = (producto1, producto2, producto3, producto4 ) => producto1 + producto2 + producto3 + producto4
-const multiplicar = (producto1, producto2, producto3, producto4 ) => producto1 * producto2 * producto3 * producto4
-
-
-
-
-const zonas = []
-zonas.push("Capital federal")
-zonas.push("Ramos mejia")
-zonas.push("Moron")
-zonas.push("Palermo")
-
-console.log (zonas)
-
-let opcion
-let respuesta
-
-
-do {
-    let  operacion,producto1, producto2 ,producto3 ,producto4 , precio , opcion
-
-    do { opcion = prompt('Elija la opcion en que zona va a comprar:\n1 - Capital Federal\n2 - Ramos Mejia\n3 - Moron\n4- Palermo');
-
-    switch (opcion){
-        case '1': 
-        producto1 = parseFloat(prompt("Cuantos productos de mates vas a comprar?"))
-        producto2 = parseFloat(prompt("Cuantos productos de termos vas a comprar?"))
-        producto3 = parseFloat(prompt("Cuantos productos de bombilla vas a comprar?"))
-        producto4 = parseFloat(prompt("Cuantos productos de kit de mate vas a comprar?"))
-        operacion = prompt("Ingrese una operacion (+)")
-
-        break ;
-
-        case '2': 
-        producto1 = parseFloat(prompt("Cuantos productos de mates vas a comprar?"))
-        producto2 = parseFloat(prompt("Cuantos productos de termos vas a comprar?"))
-        producto3 = parseFloat(prompt("Cuantos productos de bombilla vas a comprar?"))
-        producto4 = parseFloat(prompt("Cuantos productos de kit de mate vas a comprar?"))
-        operacion = prompt("Ingrese una operacion (+)")
-
-        break ;
-
-        case '3':
-        producto1 = parseFloat(prompt("Cuantos productos de mates vas a comprar?"))
-        producto2 = parseFloat(prompt("Cuantos productos de termos vas a comprar?"))
-        producto3 = parseFloat(prompt("Cuantos productos de bombilla vas a comprar?"))
-        producto4 = parseFloat(prompt("Cuantos productos de kit de mate vas a comprar?"))
-        operacion = prompt("Ingrese una operacion (+)")
-        
-        break;
-
-        case '4':
-        producto1 = parseFloat(prompt("Cuantos productos de mates vas a comprar?"))
-        producto2 = parseFloat(prompt("Cuantos productos de termos vas a comprar?"))
-        producto3 = parseFloat(prompt("Cuantos productos de bombilla vas a comprar?"))
-        producto4 = parseFloat(prompt("Cuantos productos de kit de mate vas a comprar?"))
-        operacion = prompt("Ingrese una operacion (+)")
-        
-        break;
-    }
-
-      
-        
-       
-    
-    
-    }
-
-    
-    switch(operacion) {
-        case "+":
-            console.log ("El acumulado de productos es igual a: ",sumar (producto1 ,producto2, producto3, producto4))
-            console.log ("en total te saldria :  ", multiplicar(producto1,producto2,producto3, producto4, precio ))
-            break
-        
-    } 
-
-
-    do {
-        respuesta = prompt("Necesita ingresar mas productos?").toLowerCase()
-    }
-        
-   
-}
-*/
-
 //interectuar html 
 
 class Producto{
-    constructor(id,nombre, marca, precio,img){
+    constructor(id,nombre, marca,precio,img, colores ){
         this.id = id
         this.nombre = nombre
         this.marca = marca
         this.precio = precio
         this.img = img
+        this.colores = colores
     }
 }
 
-const productosss1 = new Producto (1,"Mate", "Imperial", "$2500","https://d22fxaf9t8d39k.cloudfront.net/7f1bc31e3b67dc2038dec05e2915c9a31e748aff9233e38e7c0ae0b0683dcee1109209.png")  
-const productosss2 = new Producto (2,"Termo", "stanley", "$5000","https://cdn.shopify.com/s/files/1/0238/5366/2285/products/14.2verde_2000x.jpg?v=1605274036")
-const productosss3 = new Producto (3,"Bombilla", "Apacuero", "$950","https://http2.mlstatic.com/D_NQ_NP_898479-MLA45731292464_042021-W.jpg")
-const productosss4 = new Producto (4,"Kit de mate", "LaPampa","$7000","https://http2.mlstatic.com/D_NQ_NP_950260-MLA47443784107_092021-O.webp")
+const productosss1 = new Producto (1,"Mate", "Imperial", "$2500","https://d22fxaf9t8d39k.cloudfront.net/7f1bc31e3b67dc2038dec05e2915c9a31e748aff9233e38e7c0ae0b0683dcee1109209.png", "Rojo , Negro, Blanco")  
+const productosss2 = new Producto (2,"Termo", "stanley", "$5000","https://cdn.shopify.com/s/files/1/0238/5366/2285/products/14.2verde_2000x.jpg?v=1605274036", "Verde, Lila, Negro, Blanco")
+const productosss3 = new Producto (3,"Bombilla", "Apacuero", "$950","https://http2.mlstatic.com/D_NQ_NP_898479-MLA45731292464_042021-W.jpg", "Blanco, Rojo, Verde, Violeta")
+const productosss4 = new Producto (4,"Kit de mate", "LaPampa","$7000","https://http2.mlstatic.com/D_NQ_NP_950260-MLA47443784107_092021-O.webp" , "Negro, Rojo, Rosa, Blanco, Verde")
 
 
 const productoss = [productosss1, productosss2, productosss3, productosss4]
@@ -113,18 +27,22 @@ productoss.forEach( producto =>{
     
     mate_productos.innerHTML += `
     
- <div class="card" id="producto ${producto.nombre}" style="width: 18rem;">
- 
-    <div class="card-body">
-    
-    <h5 class="card-title"> Nombre: ${producto.nombre}</h5>
-    <p class="card-text"> Marca: ${producto.marca}</p>
-    <p class="card-text"> Precio: ${producto.precio}</p>
-    <img src="${producto.img}" class="img" alt="...">
+    <div class="card mb-3"id="producto ${producto.nombre}" style="max-width: 450px;">
+    <div class="row g-0">
+      <div class="col-md-4 ">
+        <img src="${producto.img}"   class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Producto: ${producto.nombre}</h5>
+          <p class="card-text"> Marca: ${producto.marca}</p>
+          <p class="card-text"> Colores: ${producto.colores}</p>
+          <p class="card-text"> Precio: ${producto.precio}</p>
+  
         </div>
+      </div>
     </div>
-
-    
+  </div>
 
     `
 })
@@ -188,7 +106,7 @@ formUser.addEventListener("submit",(crear)=>{
 
   //al tocar compra le llegara un mensaje de que a hecho bien la compra o le falto completar los datos
 
-    formUser.reset();
+    
 
     if (producto === '' || color === '' || direccion === ''){
         Toastify({
@@ -241,13 +159,13 @@ botonCompra.addEventListener('click', () => {
     
 
     divCarrito.innerHTML = ""
-    CarritoStorage.forEach((compra, indice) => {
+    CarritoStorage.forEach((compras, indice) => {
         divCarrito.innerHTML += `
         <div class="card border-primary mb-3" id="tarea${indice}" style="max-width: 14rem;margin:4px;">
-            <div class="card-header"><h2>Producto:${compra.producto}<h2></div>
+            <div class="card-header"><h2>Producto:${compras.producto}<h2></div>
             <div class="card-body">
-                <p class="card-text">Color:${compra.color}</p>
-                <p class="card-text">Direccion:${compra.direccion}</p>
+                <p class="card-text">Color:${compras.color}</p>
+                <p class="card-text">Direccion:${compras.direccion}</p>
                 <button class="btn btn-danger">Borrar compra</button>
                 
             </div>
@@ -255,23 +173,45 @@ botonCompra.addEventListener('click', () => {
         `
     })
 
-    /*
-    CarritoStorage.forEach((Compra, index) => {
-        document.getElementById(`compra${index}`).children[1].children[5].addEventListener('click', () => {
-            document.getElementById(`compra${index}`).remove()
-            Compra.splice(index,1)
-            localStorage.setItem("compra", JSON.stringify(Compra))
+    
+    CarritoStorage.forEach((compras, index) => {
+        document.getElementById(`tarea${index}`).children[1].children[2].addEventListener('click', () => {
+            document.getElementById(`tarea${index}`).remove()
+            localStorage.setItem("tareas", JSON.stringify(compras))
         })
-    })*/
+    })
 })
 
+//operador avanzados "agregando un acceso condicional"
 
-let CarritoStorage = JSON.parse (localStorage.getItem ("carrito"))
-
-if (CarritoStorage){
-    CarritoStorage = CarritoStorage
-} else {
-    carrito = []
+const precios1 = {
+    nombre : "Mate",
+    marca: "Imperial",
+    colores: "Rojo , Negro, Blanco",
+    precio: 2500
 }
+const precios2 =  {
+    nombre : "Termo",
+    marca: "stanley",
+    colores: "Verde, Lila, Negro, Blanco",
+    precio: 5000
+}
+const precios3 = {
+    nombre : "Bombilla",
+    marca: "Apacuero",
+    colores: "Blanco, Rojo, Verde, Violeta",
+    precio: 950
+}
+const precios4 = {
+    nombre : "Kit de mate",
+    marca: "LaPampa",
+    colores: "Negro, Rojo, Rosa, Blanco, Verde",
+    precio: 7000
+}
+const precio = [precios1, precios2, precios3, precios4]
 
-
+let acumulador = 0
+precio.forEach(precios => {
+    acumulador += precios?.precio ?? 0
+})
+console.log(acumulador)
