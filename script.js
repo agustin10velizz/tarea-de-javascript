@@ -23,14 +23,16 @@ const productoss = [productosss1, productosss2, productosss3, productosss4]
 
 const mate_productos = document.getElementById("mate_productos")
 
+
+
 productoss.forEach( producto =>{
     
     mate_productos.innerHTML += `
     
-    <div class="card mb-3"id="producto ${producto.nombre}" style="max-width: 450px;">
+    <div class="card mb-3"id="producto ${producto.nombre}" style="max-width: 450px; ">
     <div class="row g-0">
       <div class="col-md-4 ">
-        <img src="${producto.img}"   class="img-fluid rounded-start" alt="...">
+        <img src="${producto.img}"  " style="margin-top: 10px; " class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -156,12 +158,10 @@ formUser.addEventListener("submit", (e) => {
 botonCompra.addEventListener('click', () => {
     const CarritoStorage = JSON.parse(localStorage.getItem("compras"))
     
-    
-
     divCarrito.innerHTML = ""
     CarritoStorage.forEach((compras, indice) => {
         divCarrito.innerHTML += `
-        <div class="card border-primary mb-3" id="tarea${indice}" style="max-width: 14rem;margin:4px;">
+        <div class="card border-primary mb-3" id="compra${indice}" style="max-width: 14rem;margin:4px;">
             <div class="card-header"><h2>Producto:${compras.producto}<h2></div>
             <div class="card-body">
                 <p class="card-text">Color:${compras.color}</p>
@@ -175,12 +175,19 @@ botonCompra.addEventListener('click', () => {
 
     
     CarritoStorage.forEach((compras, index) => {
-        document.getElementById(`tarea${index}`).children[1].children[2].addEventListener('click', () => {
-            document.getElementById(`tarea${index}`).remove()
-            localStorage.setItem("tareas", JSON.stringify(compras))
+        document.getElementById(`compra${index}`).children[1].children[2].addEventListener('click', () => {
+            document.getElementById(`compra${index}`).remove()
+            localStorage.setItem("compras", JSON.stringify(compras))
+
+          
+
+
+
         })
     })
 })
+
+
 
 //operador avanzados "agregando un acceso condicional"
 
@@ -215,3 +222,12 @@ precio.forEach(precios => {
     acumulador += precios?.precio ?? 0
 })
 console.log(acumulador)
+
+
+//fetch
+
+fetch("./json/mate.json")
+.then(response => response.json())
+.then(mate =>{
+console.log(mate)
+})
