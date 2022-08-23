@@ -224,7 +224,7 @@ precio.forEach(precios => {
 console.log(acumulador)
 
 
-//fetch
+//fetch / esto hace consulta de los productos
 
 fetch("./json/mate.json")
 .then(response => response.json())
