@@ -1,4 +1,8 @@
 
+
+
+
+
 //interectuar html 
 
 class Producto{
@@ -12,10 +16,10 @@ class Producto{
     }
 }
 
-const productosss1 = new Producto (1,"Mate", "Imperial", "$2500","https://d22fxaf9t8d39k.cloudfront.net/7f1bc31e3b67dc2038dec05e2915c9a31e748aff9233e38e7c0ae0b0683dcee1109209.png", "Rojo , Negro, Blanco")  
-const productosss2 = new Producto (2,"Termo", "stanley", "$5000","https://cdn.shopify.com/s/files/1/0238/5366/2285/products/14.2verde_2000x.jpg?v=1605274036", "Verde, Lila, Negro, Blanco")
-const productosss3 = new Producto (3,"Bombilla", "Apacuero", "$950","https://http2.mlstatic.com/D_NQ_NP_898479-MLA45731292464_042021-W.jpg", "Blanco, Rojo, Verde, Violeta")
-const productosss4 = new Producto (4,"Kit de mate", "LaPampa","$7000","https://http2.mlstatic.com/D_NQ_NP_950260-MLA47443784107_092021-O.webp" , "Negro, Rojo, Rosa, Blanco, Verde")
+const productosss1 = new Producto (1,"Mate", "Imperial", "$18,20","https://d22fxaf9t8d39k.cloudfront.net/7f1bc31e3b67dc2038dec05e2915c9a31e748aff9233e38e7c0ae0b0683dcee1109209.png", "Rojo , Negro, Blanco")  
+const productosss2 = new Producto (2,"Termo", "stanley", "$36,39","https://cdn.shopify.com/s/files/1/0238/5366/2285/products/14.2verde_2000x.jpg?v=1605274036", "Verde, Lila, Negro, Blanco")
+const productosss3 = new Producto (3,"Bombilla", "Apacuero", "$6,91","https://http2.mlstatic.com/D_NQ_NP_898479-MLA45731292464_042021-W.jpg", "Blanco, Rojo, Verde, Violeta")
+const productosss4 = new Producto (4,"Kit de mate", "LaPampa","$50,95","https://http2.mlstatic.com/D_NQ_NP_950260-MLA47443784107_092021-O.webp" , "Negro, Rojo, Rosa, Blanco, Verde")
 
 
 const productoss = [productosss1, productosss2, productosss3, productosss4]
@@ -39,7 +43,7 @@ productoss.forEach( producto =>{
           <h5 class="card-title">Producto: ${producto.nombre}</h5>
           <p class="card-text"> Marca: ${producto.marca}</p>
           <p class="card-text"> Colores: ${producto.colores}</p>
-          <p class="card-text"> Precio: ${producto.precio}</p>
+          <p class="card-text"> Precio Dolar: ${producto.precio}</p>
   
         </div>
       </div>
@@ -231,3 +235,24 @@ fetch("./json/mate.json")
 .then(mate =>{
 console.log(mate)
 })
+
+
+//preguntando el precio actual del dolar y actualizando cada 10 segundos
+const divPrecioDolar = document.getElementById("divPrecioDolar")
+function mostrarDolar() {
+    fetch("https://criptoya.com/api/dolar")
+    .then(response => response.json())
+    .then(({oficial}) => {
+        divPrecioDolar.innerHTML = `
+            <div>
+                <h2 class="dolar">Precio actual del dolar </h2>
+                <p class="dolar ">Oficial: $${oficial}</p>
+            <div>
+        `
+    })
+}
+mostrarDolar()
+setInterval(() => {
+    mostrarDolar()
+}, 10000)
+

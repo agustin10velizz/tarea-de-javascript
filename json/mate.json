@@ -4,27 +4,27 @@
     "nombre ": "Mate",
       "marca": "Imperial",
        "colores": "Rojo , Negro, Blanco",
-        "precio": 2500
+        "precio": 18
     },
     {
       "id" :2,
      "nombre" : "Termo",
         "marca": "stanley",
           "colores": "Verde, Lila, Negro, Blanco",
-           "precio": 5000
+           "precio": 36
     },
     {
       "id" :3,
     "nombre ": "Bombilla",
        "marca": "Apacuero",
          "colores": "Blanco, Rojo, Verde, Violeta",
-           "precio": 950
+           "precio": 6
     },
     {
       "id" :4,
     "nombre" : "Kit de mate",
       "marca": "LaPampa",
         "colores": "Negro, Rojo, Rosa, Blanco, Verde",
-          "precio": 7000
+          "precio": 50
     }
 ]
