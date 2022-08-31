@@ -7,13 +7,13 @@ body{
 
 .ModoOscuro {
     background-color: rgb(36, 34, 34);
-    color:rgb(255, 136, 0);
+    color:rgb(103, 62, 216);
 }
 
 .card{
     background-color:  #ffffff;
     margin:15px;
-    box-shadow: 1px 2px 5px 5px  #06ffd6f5;
+    box-shadow: 1px 2px 5px 5px  #057965f5;
    
 }
 
@@ -47,4 +47,8 @@ body{
 
 .dolar{
     text-align: center;
+}
+
+.card-header{
+    padding-left: 25px;
 }

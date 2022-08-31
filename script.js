@@ -1,9 +1,4 @@
-
-
-
-
-
-//interectuar html 
+//interectuar html , muestras las imagenes con el precio
 
 class Producto{
     constructor(id,nombre, marca,precio,img, colores ){
@@ -111,9 +106,7 @@ formUser.addEventListener("submit",(crear)=>{
     compras.push(compra);
 
   //al tocar compra le llegara un mensaje de que a hecho bien la compra o le falto completar los datos
-
-    
-
+  
     if (producto === '' || color === '' || direccion === ''){
         Toastify({
             text: "Faltan completar la compra",
@@ -159,13 +152,14 @@ formUser.addEventListener("submit", (e) => {
     formUser.reset()
 })
 
+//cuando toque "ver la compra" podra ver el producto , el color y  la dirreccion que puso
 botonCompra.addEventListener('click', () => {
     const CarritoStorage = JSON.parse(localStorage.getItem("compras"))
     
     divCarrito.innerHTML = ""
-    CarritoStorage.forEach((compras, indice) => {
+    CarritoStorage.forEach((compras, index) => {
         divCarrito.innerHTML += `
-        <div class="card border-primary mb-3" id="compra${indice}" style="max-width: 14rem;margin:4px;">
+        <div class="card border-primary mb-3" id="compra${index}" style="max-width: 14rem;margin:20px;">
             <div class="card-header"><h2>Producto:${compras.producto}<h2></div>
             <div class="card-body">
                 <p class="card-text">Color:${compras.color}</p>
@@ -177,16 +171,19 @@ botonCompra.addEventListener('click', () => {
         `
     })
 
-    
+    //al tocar "borrar compra le salta una notificacion que borro la compra"
     CarritoStorage.forEach((compras, index) => {
         document.getElementById(`compra${index}`).children[1].children[2].addEventListener('click', () => {
             document.getElementById(`compra${index}`).remove()
             localStorage.setItem("compras", JSON.stringify(compras))
 
-          
-
-
-
+            Swal.fire({
+                icon: 'info',
+                title: '<h3 >Compra Eliminada  <h3>',
+                text: '',
+                footer: ''
+            }) 
+        
         })
     })
 })
@@ -228,7 +225,7 @@ precio.forEach(precios => {
 console.log(acumulador)
 
 
-//fetch / esto hace consulta de los productos
+//fetch / esto hace consulta de los productos en la consola
 
 fetch("./json/mate.json")
 .then(response => response.json())
